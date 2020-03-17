@@ -19,6 +19,7 @@ public class BinarySearchTree {
     /**
      * @param args the command line arguments
      */
+    int count=0;
     Node root;
     BinarySearchTree(){
         root=null;
@@ -64,15 +65,21 @@ public class BinarySearchTree {
     }
     private boolean searchBst(Node root,String item){
       //  boolean found=false;
+        
         if(root==null)
             return false;
-        else if(item.compareTo(root.key)==0)
+        else if(item.compareTo(root.key)==0){
+                count++;
+                System.out.println("Inspected "+count+" Nodes");
                 return true;
-         else if(item.compareTo(root.key)>0)
+        }else if(item.compareTo(root.key)>0){
+                    count++;
                     return searchBst(root.right,item);
-            else
+         }
+         else{
+                    count++;
                     return searchBst(root.left,item);
-            
+         }
     }
     ///Deletion of a node from BinarySearchTree
     public void delete(String item){
